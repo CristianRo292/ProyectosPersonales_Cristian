@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h1>Gestion de Inventario</h1>
+    <div> 
+        <h2>Recoporte de Existencias Segun su Categoria</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Productos Existentes</th>
+                    <th>Valor estimado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Acciones -->
+                {% for stock in existencias %}
+                <tr>
+                    <td>{{ stock.categoria }}</td>
+                    <td>{{ stock.existencias }}</td>
+                    <td>${{ stock.valor}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr>
+        <!--Comienza la seccion de mis pasatiempos-->
+        <div class="container mt-5"> <!--Guardo todo en un contenedor y pido que le de margenes amplios-->
+            <div class="row">
+                <!-- Tarjeta de Pasatiempos -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                    <div class="card-body">
+                        <img src="/static/img_Ventas.png" alt="imagen de carrito de vetas" class="imagenAdaptativa">
+                        <h4 class="card-title">Vender</h4>
+                        <p class="card-text">Vas a vender un producto?, registralos aqui!!!</p>
+                        <a href="/vender" class="btn btn-primary">Vender</a>
+                        
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Habilidades -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                    <div class="card-body">
+                        <img src="/static/img_Compras.png" alt="imagen de cajas compradas" class="imagenAdaptativa">
+                        <h4 class="card-title">Comprar</h4>
+                        <p class="card-text">Compraras mercancia?, regitrala aqui!!!</p>
+                        <a href="/comprar" class="btn btn-primary">comprar</a>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Temas de interes -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                    <div class="card-body">
+                        <img src="/static/img_inventario.png" alt="imegen de inventario" class="imagenAdaptativa">
+                        <h4 class="card-title">Inventario</h4>
+                        <p class="card-text">Consulta cuantos productos tienes disponibes</p>
+                        <a href="/inventario" class="btn btn-primary">inventario</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+        <hr>
+    
+{% endblock %}

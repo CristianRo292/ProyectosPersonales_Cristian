@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buscar
+{% endblock %}
+
+{% block main %}
+    <head>
+        <h1>Buscar Producto</h1>
+    </head>
+    <main>
+        <div>
+            <form action="/buscar" method="post">
+                <input type="search" autocomplete="off" autofocus name="busqueda" placeholder="Buscar un producto" required class="campoTexto">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+        <hr>
+        <div>
+            <h4>Resultados de busqueda</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id </th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Descripcion</th>
+                        <th>Precio Unitario</th>
+                        <th>Existencias</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="resultados">
+                    <!-- Acciones -->
+                    {%for fila in similitudes%}
+                        <tr>
+                        <td>{{fila.id}}</td>
+                        <td>{{fila.nombre}}</td>
+                        <td>{{fila.categoria}}</td>
+                        <td>{{fila.descripcion}}</td>
+                        <td>${{fila.precio_unitario}}</td>
+                        <td>{{fila.existencias}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        
+    </main>
+{% endblock %}

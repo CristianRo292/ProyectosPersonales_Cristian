@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Comprar{% endblock %}
+
+{% block main %}
+<h1>Registrar Compra</h1>
+
+<form action="/comprar" method="post">
+    <div class="mb-3">
+        <h5>Nombre del Producto</h5>
+        <select name="nombreP" class="form-control" required id="producto">
+                <option disabled selected value="">Producto</option>
+                {%for producto in productos%}
+                    <option value="{{producto.id}}">{{producto.nombre}}</option>
+                {%endfor%}
+                
+            </select>
+    </div>
+
+    <div class="mb-3">
+        <h5>Cantidad de Unidade</h5>
+        <input type="number" name="unidades" class="form-control" min="1" required>
+    </div>
+    <div class="mb-3">
+        <h5>Costo Unitario</h5>
+        <input type="number" name="costo" class="form-control" min="1" required>
+    </div>
+
+    <button type="submit" class="btn btn-warning">Registrar Compra</button>
+    <a href="/" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

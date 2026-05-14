@@ -1,0 +1,63 @@
+#include <IRremote.hpp>
+
+// Define el pin del receptor
+const int RECV_PIN = 11;
+uint32_t codigo;
+
+void setup() {
+  Serial.begin(9600);
+  // Inicializa el receptor IR
+  IrReceiver.begin(RECV_PIN, ENABLE_LED_FEEDBACK);
+  Serial.println("--- Mapeo de Control LAFVIN ---");
+  Serial.println("Presiona una tecla para ver su codigo...");
+}
+
+void loop() {
+  if (IrReceiver.decode()) {
+    // Obtenemos el codigo en formato HEX
+    codigo = IrReceiver.decodedIRData.decodedRawData;
+
+    // Solo mostramos si el codigo es valido (evita errores de lectura)
+    if (codigo != 0) {
+      Serial.print("Codigo detectado: 0x");
+      Serial.print(codigo, HEX);
+      Serial.print(" -> Tecla: ");
+      
+      imprimirNombreTecla(codigo);
+    }
+
+    IrReceiver.resume(); // Habilita la siguiente lectura
+  }
+}
+
+// En esta funcion es donde agregaras tus codigos manualmente
+void imprimirNombreTecla(uint32_t valor) {
+  switch (valor) {
+    // --- REEMPLAZA LOS '0x0000' CON LOS CODIGOS QUE SALGAN EN TU MONITOR ---
+    case 0xB946FF00: Serial.println("FLECHA ARRIBA"); break; 
+    case 0xEA15FF00: Serial.println("FLECHA ABAJO"); break;
+    case 0xBB44FF00: Serial.println("FLECHA IZQUIERDA"); break;
+    case 0xBC43FF00: Serial.println("FLECHA DERECHA"); break;
+    case 0xBF40FF00: Serial.println("OK"); break;
+    
+    case 0xE916FF00: Serial.println("1"); break;
+    case 0xE619FF00: Serial.println("2"); break;
+    case 0xF20DFF00: Serial.println("3"); break;
+    case 0xF30CFF00: Serial.println("4"); break;
+    case 0xE718FF00: Serial.println("5"); break;
+    case 0xA15EFF00: Serial.println("6"); break;
+    case 0xF708FF00: Serial.println("7"); break;
+    case 0xE31CFF00: Serial.println("8"); break;
+    case 0xA55AFF00: Serial.println("9"); break;
+    case 0xAD52FF00: Serial.println("0"); break;
+    
+    case 0xBD42FF00: Serial.println("* (ASTERISCO)"); break;
+    case 0xB54AFF00: Serial.println("# (NUMERAL)"); break;
+
+    default:
+      Serial.println("TECLA NO REGISTRADA");
+      Serial.println("Codigo: ");
+      Serial.print(codigo);
+      break;
+  }
+}

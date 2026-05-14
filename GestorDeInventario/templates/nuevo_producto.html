@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Comprar{% endblock %}
+
+{% block main %}
+<h1>Agregar Producto</h1>
+
+<form action="/nuevo_producto" method="post">
+    <div class="mb-3">
+        <h5>Nombre del Producto</h5>
+        <input type="text" name="nombre" class="form-control" autocomplete="off"  required>
+    </div>
+    <div class="mb-3">
+        <h5>Categoria del Producto</h5>
+        <input type="text" name="categoria" class="form-control"  required autocomplete="off">
+    </div>
+    <div class="mb-3">
+        <h5>Descripcion del Producto</h5>
+        <input type="text" name="descripcion" class="form-control"  required autocomplete="off">
+    </div>
+    <div class="mb-3">
+        <h5>Precio Unitario</h5>
+        <input type="number" name="precio_unitario" class="form-control" min="1" required autocomplete="off">
+    </div>
+
+    <button type="submit" class="btn btn-warning">Registrar Compra</button>
+    <a href="/" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

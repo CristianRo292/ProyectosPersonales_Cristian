@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Inventario
+{% endblock %}
+
+{% block main %}
+    <head>
+        <h1>Inventario</h1>
+        <p>La tabla contiene la informcion de todos los productos existenctes</p>
+    </head>
+    <main>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id </th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Precio Unitario</th>
+                        <th>Existencias</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Acciones -->
+                    {%for fila in similitudes%}
+                        <tr>
+                        <td>{{fila.id}}</td>
+                        <td>{{fila.nombre}}</td>
+                        <td>{{fila.categoria}}</td>
+                        <td>${{fila.precio_unitario}}</td>
+                        <td>{{fila.existencias}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <a href="/buscar" class="btn btn-primary">Buscar</a>
+    </footer>
+{% endblock %}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Inicio(Historia).unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/esc2_indicaciones.unity
+    guid: b99497a45ab173e449c8253077f4990b
+  - enabled: 1
+    path: Assets/Scenes/CampoDeBatalla_Recuperado.unity
+    guid: 8c6c58e66c448b44c9f23ab0acf3a32d
+  - enabled: 1
+    path: Assets/Scenes/CampoDeBatalla_Level2.unity
+    guid: f84e935efc1d2554bb0e5d0f21f55474
+  - enabled: 1
+    path: Assets/Scenes/CampoDeBatalla_Level3.unity
+    guid: 8118eb7ed246238499b2fcaf2856348d
+  m_configObjects: {}

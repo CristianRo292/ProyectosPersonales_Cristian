@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Vender
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <h1>Vender Producto</h1>
+        <form action="/procesar_venta" method="post">
+            <select name="nombreP" required id="producto" class="campoTexto">
+                <option disabled selected value="">Producto</option>
+                <!--Se recorre el bucle con la informacion de las acciones que tiene -->
+                {%for producto in productos%}
+                    <option value="{{producto.id}}">{{producto.nombre}}</option>
+                {%endfor%}
+            </select>
+                <input type="search" autocomplete="off" autofocus name="unidades" placeholder="Unidades" required class="campoTexto">
+                <button type="submit" class="btn btn-warning">Agregar</button>
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h4>Resumen de venta</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Unidades</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
+                    </tr>
+                </thead>
+                <tbody id="resultados">
+                    <!-- Acciones -->
+                    {%for fila in ventas%}
+                        <tr>
+                        <td>{{fila.nombre}}</td>
+                        <td>{{fila.unidades}}</td>
+                        <td>{{fila.precio}}</td>
+                        <td>${{fila.total}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+    </div>
+    <hr>
+    <h4>Total: {{total}}</h4>
+    <hr>
+    <div>
+        <form action="/vender" method="post"><button type="submit" class="btn btn-primary">Vender</button></form>
+    </div>
+{% endblock %}
